@@ -15,13 +15,21 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dialog = new OpenFileDialog()) {
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
                 dialog.Filter = "CSV files (*.csv)|*.csv";
-                if (dialog.ShowDialog() == DialogResult.OK) { 
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
                     ds.LoadFromCsv(dialog.FileName);
                     MessageBox.Show("Данные загружены!");
                 }
             }
+        }
+
+        private void btnAbout_MAD_Click(object sender, EventArgs e)
+        {
+            FormAbout formAbout = new FormAbout();
+            formAbout.ShowDialog();
         }
     }
 }

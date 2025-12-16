@@ -32,6 +32,7 @@
             dataGridView1 = new DataGridView();
             btnLoad = new Button();
             button2 = new Button();
+            btnAbout_MAD = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -62,11 +63,22 @@
             button2.TabIndex = 1;
             button2.UseVisualStyleBackColor = true;
             // 
+            // btnAbout_MAD
+            // 
+            btnAbout_MAD.Image = (Image)resources.GetObject("btnAbout_MAD.Image");
+            btnAbout_MAD.Location = new Point(185, 32);
+            btnAbout_MAD.Name = "btnAbout_MAD";
+            btnAbout_MAD.Size = new Size(52, 50);
+            btnAbout_MAD.TabIndex = 1;
+            btnAbout_MAD.UseVisualStyleBackColor = true;
+            btnAbout_MAD.Click += btnAbout_MAD_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnAbout_MAD);
             Controls.Add(button2);
             Controls.Add(btnLoad);
             Controls.Add(dataGridView1);
@@ -81,5 +93,6 @@
         private DataGridView dataGridView1;
         private Button btnLoad;
         private Button button2;
+        private Button btnAbout_MAD;
     }
 }
