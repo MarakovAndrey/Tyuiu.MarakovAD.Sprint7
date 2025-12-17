@@ -29,70 +29,195 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            dataGridView1 = new DataGridView();
-            btnLoad = new Button();
-            button2 = new Button();
+            dataGridViewDataTable_MAD = new DataGridView();
+            btnLoadCSVFile_MAD = new Button();
+            buttonSaveFile_MAD = new Button();
             btnAbout_MAD = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            openFileDialogInputCSVFile_MAD = new OpenFileDialog();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            groupBoxDataTable_MAD = new GroupBox();
+            panel3 = new Panel();
+            groupBoxStatisics_MAD = new GroupBox();
+            splitter1 = new Splitter();
+            panel4 = new Panel();
+            groupBoxGraph_MAD = new GroupBox();
+            saveFileDialogOutputCSVFile_MAD = new SaveFileDialog();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            groupBoxDataTable_MAD.SuspendLayout();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewDataTable_MAD
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 134);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(776, 304);
-            dataGridView1.TabIndex = 0;
+            dataGridViewDataTable_MAD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDataTable_MAD.Dock = DockStyle.Fill;
+            dataGridViewDataTable_MAD.Location = new Point(7, 23);
+            dataGridViewDataTable_MAD.Name = "dataGridViewDataTable_MAD";
+            dataGridViewDataTable_MAD.Size = new Size(787, 323);
+            dataGridViewDataTable_MAD.TabIndex = 0;
             // 
-            // btnLoad
+            // btnLoadCSVFile_MAD
             // 
-            btnLoad.Image = (Image)resources.GetObject("btnLoad.Image");
-            btnLoad.Location = new Point(23, 32);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(52, 50);
-            btnLoad.TabIndex = 1;
-            btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += btnLoad_Click;
+            btnLoadCSVFile_MAD.Image = (Image)resources.GetObject("btnLoadCSVFile_MAD.Image");
+            btnLoadCSVFile_MAD.Location = new Point(12, 12);
+            btnLoadCSVFile_MAD.Name = "btnLoadCSVFile_MAD";
+            btnLoadCSVFile_MAD.Size = new Size(52, 50);
+            btnLoadCSVFile_MAD.TabIndex = 1;
+            btnLoadCSVFile_MAD.UseVisualStyleBackColor = true;
+            btnLoadCSVFile_MAD.Click += btnLoadCSVFile_MAD_Click;
             // 
-            // button2
+            // buttonSaveFile_MAD
             // 
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(104, 32);
-            button2.Name = "button2";
-            button2.Size = new Size(52, 50);
-            button2.TabIndex = 1;
-            button2.UseVisualStyleBackColor = true;
+            buttonSaveFile_MAD.Image = (Image)resources.GetObject("buttonSaveFile_MAD.Image");
+            buttonSaveFile_MAD.Location = new Point(70, 12);
+            buttonSaveFile_MAD.Name = "buttonSaveFile_MAD";
+            buttonSaveFile_MAD.Size = new Size(52, 50);
+            buttonSaveFile_MAD.TabIndex = 1;
+            buttonSaveFile_MAD.UseVisualStyleBackColor = true;
+            buttonSaveFile_MAD.Click += buttonSaveFile_MAD_Click;
             // 
             // btnAbout_MAD
             // 
             btnAbout_MAD.Image = (Image)resources.GetObject("btnAbout_MAD.Image");
-            btnAbout_MAD.Location = new Point(185, 32);
+            btnAbout_MAD.Location = new Point(736, 12);
             btnAbout_MAD.Name = "btnAbout_MAD";
             btnAbout_MAD.Size = new Size(52, 50);
             btnAbout_MAD.TabIndex = 1;
             btnAbout_MAD.UseVisualStyleBackColor = true;
             btnAbout_MAD.Click += btnAbout_MAD_Click;
             // 
+            // openFileDialogInputCSVFile_MAD
+            // 
+            openFileDialogInputCSVFile_MAD.FileName = "openFileDialog1";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(btnAbout_MAD);
+            panel1.Controls.Add(btnLoadCSVFile_MAD);
+            panel1.Controls.Add(buttonSaveFile_MAD);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(801, 75);
+            panel1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.Control;
+            panel2.Controls.Add(groupBoxDataTable_MAD);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 75);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(801, 353);
+            panel2.TabIndex = 3;
+            // 
+            // groupBoxDataTable_MAD
+            // 
+            groupBoxDataTable_MAD.BackColor = SystemColors.Control;
+            groupBoxDataTable_MAD.Controls.Add(dataGridViewDataTable_MAD);
+            groupBoxDataTable_MAD.Dock = DockStyle.Fill;
+            groupBoxDataTable_MAD.Location = new Point(0, 0);
+            groupBoxDataTable_MAD.Name = "groupBoxDataTable_MAD";
+            groupBoxDataTable_MAD.Padding = new Padding(7);
+            groupBoxDataTable_MAD.Size = new Size(801, 353);
+            groupBoxDataTable_MAD.TabIndex = 7;
+            groupBoxDataTable_MAD.TabStop = false;
+            groupBoxDataTable_MAD.Text = "Таблица даных";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Chocolate;
+            panel3.Controls.Add(groupBoxStatisics_MAD);
+            panel3.Dock = DockStyle.Left;
+            panel3.Location = new Point(0, 428);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(395, 381);
+            panel3.TabIndex = 4;
+            // 
+            // groupBoxStatisics_MAD
+            // 
+            groupBoxStatisics_MAD.BackColor = SystemColors.Control;
+            groupBoxStatisics_MAD.Dock = DockStyle.Fill;
+            groupBoxStatisics_MAD.Location = new Point(0, 0);
+            groupBoxStatisics_MAD.Name = "groupBoxStatisics_MAD";
+            groupBoxStatisics_MAD.Padding = new Padding(7);
+            groupBoxStatisics_MAD.Size = new Size(395, 381);
+            groupBoxStatisics_MAD.TabIndex = 0;
+            groupBoxStatisics_MAD.TabStop = false;
+            groupBoxStatisics_MAD.Text = "Статистика";
+            // 
+            // splitter1
+            // 
+            splitter1.Location = new Point(395, 428);
+            splitter1.Name = "splitter1";
+            splitter1.Size = new Size(3, 381);
+            splitter1.TabIndex = 5;
+            splitter1.TabStop = false;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = SystemColors.ActiveCaption;
+            panel4.Controls.Add(groupBoxGraph_MAD);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(398, 428);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(403, 381);
+            panel4.TabIndex = 6;
+            // 
+            // groupBoxGraph_MAD
+            // 
+            groupBoxGraph_MAD.BackColor = SystemColors.Control;
+            groupBoxGraph_MAD.Dock = DockStyle.Fill;
+            groupBoxGraph_MAD.Location = new Point(0, 0);
+            groupBoxGraph_MAD.Name = "groupBoxGraph_MAD";
+            groupBoxGraph_MAD.Size = new Size(403, 381);
+            groupBoxGraph_MAD.TabIndex = 0;
+            groupBoxGraph_MAD.TabStop = false;
+            groupBoxGraph_MAD.Text = "График";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnAbout_MAD);
-            Controls.Add(button2);
-            Controls.Add(btnLoad);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(801, 809);
+            Controls.Add(panel4);
+            Controls.Add(splitter1);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            MinimumSize = new Size(817, 848);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "География";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).EndInit();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            groupBoxDataTable_MAD.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private Button btnLoad;
-        private Button button2;
+        private DataGridView dataGridViewDataTable_MAD;
+        private Button btnLoadCSVFile_MAD;
+        private Button buttonSaveFile_MAD;
         private Button btnAbout_MAD;
+        private OpenFileDialog openFileDialogInputCSVFile_MAD;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private Splitter splitter1;
+        private Panel panel4;
+        private GroupBox groupBoxDataTable_MAD;
+        private GroupBox groupBoxStatisics_MAD;
+        private GroupBox groupBoxGraph_MAD;
+        private SaveFileDialog saveFileDialogOutputCSVFile_MAD;
     }
 }

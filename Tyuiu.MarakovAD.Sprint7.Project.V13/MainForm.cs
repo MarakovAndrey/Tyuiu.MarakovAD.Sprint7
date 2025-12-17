@@ -7,22 +7,19 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
         public Form1()
         {
             InitializeComponent();
-            dataGridView1.DataSource = ds.Countries;
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ReadOnly = false;
+            openFileDialogInputCSVFile_MAD.Filter = "Значения, разделенные точкой с запятой(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            dataGridViewDataTable_MAD.DataSource = ds.Countries;
+            dataGridViewDataTable_MAD.AutoGenerateColumns = true;
+            dataGridViewDataTable_MAD.AllowUserToAddRows = false;
+            dataGridViewDataTable_MAD.ReadOnly = false;
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void btnLoadCSVFile_MAD_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dialog = new OpenFileDialog())
+            if (openFileDialogInputCSVFile_MAD.ShowDialog() == DialogResult.OK)
             {
-                dialog.Filter = "CSV files (*.csv)|*.csv";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ds.LoadFromCsv(dialog.FileName);
-                    MessageBox.Show("Данные загружены!");
-                }
+                ds.LoadFromCsv(openFileDialogInputCSVFile_MAD.FileName);
+                MessageBox.Show("Данные загружены!");
             }
         }
 
@@ -30,6 +27,14 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
         {
             FormAbout formAbout = new FormAbout();
             formAbout.ShowDialog();
+        }
+
+        private void buttonSaveFile_MAD_Click(object sender, EventArgs e)
+        {
+            saveFileDialogOutputCSVFile_MAD.Filter = "Значения, разделенные точкой с запятой(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            saveFileDialogOutputCSVFile_MAD.FileName = "*.csv";
+            saveFileDialogOutputCSVFile_MAD.InitialDirectory = Directory.GetCurrentDirectory();
+            saveFileDialogOutputCSVFile_MAD.ShowDialog();
         }
     }
 }
