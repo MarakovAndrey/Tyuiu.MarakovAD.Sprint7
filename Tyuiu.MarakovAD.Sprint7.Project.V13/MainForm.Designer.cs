@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             dataGridViewDataTable_MAD = new DataGridView();
             btnLoadCSVFile_MAD = new Button();
@@ -35,14 +36,17 @@
             btnAbout_MAD = new Button();
             openFileDialogInputCSVFile_MAD = new OpenFileDialog();
             panel1 = new Panel();
+            buttonAddRow_MAD = new Button();
             panel2 = new Panel();
             groupBoxDataTable_MAD = new GroupBox();
+            splitter2 = new Splitter();
             panel3 = new Panel();
             groupBoxStatisics_MAD = new GroupBox();
             splitter1 = new Splitter();
             panel4 = new Panel();
             groupBoxGraph_MAD = new GroupBox();
             saveFileDialogOutputCSVFile_MAD = new SaveFileDialog();
+            toolTip1 = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -57,7 +61,7 @@
             dataGridViewDataTable_MAD.Dock = DockStyle.Fill;
             dataGridViewDataTable_MAD.Location = new Point(7, 23);
             dataGridViewDataTable_MAD.Name = "dataGridViewDataTable_MAD";
-            dataGridViewDataTable_MAD.Size = new Size(787, 323);
+            dataGridViewDataTable_MAD.Size = new Size(787, 342);
             dataGridViewDataTable_MAD.TabIndex = 0;
             // 
             // btnLoadCSVFile_MAD
@@ -67,6 +71,7 @@
             btnLoadCSVFile_MAD.Name = "btnLoadCSVFile_MAD";
             btnLoadCSVFile_MAD.Size = new Size(52, 50);
             btnLoadCSVFile_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(btnLoadCSVFile_MAD, "Открыть файл\r\nВыберите нужный файл для обработки\r\n");
             btnLoadCSVFile_MAD.UseVisualStyleBackColor = true;
             btnLoadCSVFile_MAD.Click += btnLoadCSVFile_MAD_Click;
             // 
@@ -77,6 +82,7 @@
             buttonSaveFile_MAD.Name = "buttonSaveFile_MAD";
             buttonSaveFile_MAD.Size = new Size(52, 50);
             buttonSaveFile_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonSaveFile_MAD, "Сохранить файл\r\nВыберите место для сохранения файла\r\n");
             buttonSaveFile_MAD.UseVisualStyleBackColor = true;
             buttonSaveFile_MAD.Click += buttonSaveFile_MAD_Click;
             // 
@@ -87,6 +93,7 @@
             btnAbout_MAD.Name = "btnAbout_MAD";
             btnAbout_MAD.Size = new Size(52, 50);
             btnAbout_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(btnAbout_MAD, "Справка\r\nИнформация о создателе");
             btnAbout_MAD.UseVisualStyleBackColor = true;
             btnAbout_MAD.Click += btnAbout_MAD_Click;
             // 
@@ -99,6 +106,7 @@
             panel1.BackColor = SystemColors.ControlLight;
             panel1.Controls.Add(btnAbout_MAD);
             panel1.Controls.Add(btnLoadCSVFile_MAD);
+            panel1.Controls.Add(buttonAddRow_MAD);
             panel1.Controls.Add(buttonSaveFile_MAD);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -106,14 +114,26 @@
             panel1.Size = new Size(801, 75);
             panel1.TabIndex = 2;
             // 
+            // buttonAddRow_MAD
+            // 
+            buttonAddRow_MAD.Image = (Image)resources.GetObject("buttonAddRow_MAD.Image");
+            buttonAddRow_MAD.Location = new Point(128, 12);
+            buttonAddRow_MAD.Name = "buttonAddRow_MAD";
+            buttonAddRow_MAD.Size = new Size(52, 50);
+            buttonAddRow_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonAddRow_MAD, "Добавить строку\r\nДобавляет строку к существующей таблице");
+            buttonAddRow_MAD.UseVisualStyleBackColor = true;
+            buttonAddRow_MAD.Click += buttonAddRow_MAD_Click;
+            // 
             // panel2
             // 
             panel2.BackColor = SystemColors.Control;
             panel2.Controls.Add(groupBoxDataTable_MAD);
+            panel2.Controls.Add(splitter2);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 75);
             panel2.Name = "panel2";
-            panel2.Size = new Size(801, 353);
+            panel2.Size = new Size(801, 375);
             panel2.TabIndex = 3;
             // 
             // groupBoxDataTable_MAD
@@ -124,19 +144,28 @@
             groupBoxDataTable_MAD.Location = new Point(0, 0);
             groupBoxDataTable_MAD.Name = "groupBoxDataTable_MAD";
             groupBoxDataTable_MAD.Padding = new Padding(7);
-            groupBoxDataTable_MAD.Size = new Size(801, 353);
+            groupBoxDataTable_MAD.Size = new Size(801, 372);
             groupBoxDataTable_MAD.TabIndex = 7;
             groupBoxDataTable_MAD.TabStop = false;
             groupBoxDataTable_MAD.Text = "Таблица даных";
+            // 
+            // splitter2
+            // 
+            splitter2.Dock = DockStyle.Bottom;
+            splitter2.Location = new Point(0, 372);
+            splitter2.Name = "splitter2";
+            splitter2.Size = new Size(801, 3);
+            splitter2.TabIndex = 0;
+            splitter2.TabStop = false;
             // 
             // panel3
             // 
             panel3.BackColor = Color.Chocolate;
             panel3.Controls.Add(groupBoxStatisics_MAD);
             panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 428);
+            panel3.Location = new Point(0, 450);
             panel3.Name = "panel3";
-            panel3.Size = new Size(395, 381);
+            panel3.Size = new Size(395, 359);
             panel3.TabIndex = 4;
             // 
             // groupBoxStatisics_MAD
@@ -146,16 +175,16 @@
             groupBoxStatisics_MAD.Location = new Point(0, 0);
             groupBoxStatisics_MAD.Name = "groupBoxStatisics_MAD";
             groupBoxStatisics_MAD.Padding = new Padding(7);
-            groupBoxStatisics_MAD.Size = new Size(395, 381);
+            groupBoxStatisics_MAD.Size = new Size(395, 359);
             groupBoxStatisics_MAD.TabIndex = 0;
             groupBoxStatisics_MAD.TabStop = false;
             groupBoxStatisics_MAD.Text = "Статистика";
             // 
             // splitter1
             // 
-            splitter1.Location = new Point(395, 428);
+            splitter1.Location = new Point(395, 450);
             splitter1.Name = "splitter1";
-            splitter1.Size = new Size(3, 381);
+            splitter1.Size = new Size(3, 359);
             splitter1.TabIndex = 5;
             splitter1.TabStop = false;
             // 
@@ -164,9 +193,9 @@
             panel4.BackColor = SystemColors.ActiveCaption;
             panel4.Controls.Add(groupBoxGraph_MAD);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(398, 428);
+            panel4.Location = new Point(398, 450);
             panel4.Name = "panel4";
-            panel4.Size = new Size(403, 381);
+            panel4.Size = new Size(403, 359);
             panel4.TabIndex = 6;
             // 
             // groupBoxGraph_MAD
@@ -175,10 +204,15 @@
             groupBoxGraph_MAD.Dock = DockStyle.Fill;
             groupBoxGraph_MAD.Location = new Point(0, 0);
             groupBoxGraph_MAD.Name = "groupBoxGraph_MAD";
-            groupBoxGraph_MAD.Size = new Size(403, 381);
+            groupBoxGraph_MAD.Size = new Size(403, 359);
             groupBoxGraph_MAD.TabIndex = 0;
             groupBoxGraph_MAD.TabStop = false;
             groupBoxGraph_MAD.Text = "График";
+            // 
+            // toolTip1
+            // 
+            toolTip1.ToolTipIcon = ToolTipIcon.Info;
+            toolTip1.ToolTipTitle = "Подсказка";
             // 
             // Form1
             // 
@@ -219,5 +253,8 @@
         private GroupBox groupBoxStatisics_MAD;
         private GroupBox groupBoxGraph_MAD;
         private SaveFileDialog saveFileDialogOutputCSVFile_MAD;
+        private Button buttonAddRow_MAD;
+        private ToolTip toolTip1;
+        private Splitter splitter2;
     }
 }
