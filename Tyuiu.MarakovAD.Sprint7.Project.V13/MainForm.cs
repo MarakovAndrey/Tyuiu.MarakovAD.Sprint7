@@ -89,5 +89,17 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
             }
         }
 
+        private void buttonDeleteRow_MAD_Click(object sender, EventArgs e)
+        {
+            if (ds.Countries.Count == 0) {
+                MessageBox.Show("Таблица пуста", "Инфорация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int lastIndex = ds.Countries.Count - 1;
+            var lastCountry = ds.Countries[lastIndex];
+            ds.Countries.RemoveAt(lastIndex);
+        }
+
     }
 }

@@ -47,6 +47,7 @@
             groupBoxGraph_MAD = new GroupBox();
             saveFileDialogOutputCSVFile_MAD = new SaveFileDialog();
             toolTip1 = new ToolTip(components);
+            buttonDeleteRow_MAD = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -67,7 +68,7 @@
             // btnLoadCSVFile_MAD
             // 
             btnLoadCSVFile_MAD.Image = (Image)resources.GetObject("btnLoadCSVFile_MAD.Image");
-            btnLoadCSVFile_MAD.Location = new Point(12, 12);
+            btnLoadCSVFile_MAD.Location = new Point(7, 12);
             btnLoadCSVFile_MAD.Name = "btnLoadCSVFile_MAD";
             btnLoadCSVFile_MAD.Size = new Size(52, 50);
             btnLoadCSVFile_MAD.TabIndex = 1;
@@ -78,7 +79,7 @@
             // buttonSaveFile_MAD
             // 
             buttonSaveFile_MAD.Image = (Image)resources.GetObject("buttonSaveFile_MAD.Image");
-            buttonSaveFile_MAD.Location = new Point(70, 12);
+            buttonSaveFile_MAD.Location = new Point(65, 12);
             buttonSaveFile_MAD.Name = "buttonSaveFile_MAD";
             buttonSaveFile_MAD.Size = new Size(52, 50);
             buttonSaveFile_MAD.TabIndex = 1;
@@ -89,7 +90,7 @@
             // btnAbout_MAD
             // 
             btnAbout_MAD.Image = (Image)resources.GetObject("btnAbout_MAD.Image");
-            btnAbout_MAD.Location = new Point(736, 12);
+            btnAbout_MAD.Location = new Point(742, 12);
             btnAbout_MAD.Name = "btnAbout_MAD";
             btnAbout_MAD.Size = new Size(52, 50);
             btnAbout_MAD.TabIndex = 1;
@@ -106,6 +107,7 @@
             panel1.BackColor = SystemColors.ControlLight;
             panel1.Controls.Add(btnAbout_MAD);
             panel1.Controls.Add(btnLoadCSVFile_MAD);
+            panel1.Controls.Add(buttonDeleteRow_MAD);
             panel1.Controls.Add(buttonAddRow_MAD);
             panel1.Controls.Add(buttonSaveFile_MAD);
             panel1.Dock = DockStyle.Top;
@@ -117,7 +119,7 @@
             // buttonAddRow_MAD
             // 
             buttonAddRow_MAD.Image = (Image)resources.GetObject("buttonAddRow_MAD.Image");
-            buttonAddRow_MAD.Location = new Point(128, 12);
+            buttonAddRow_MAD.Location = new Point(123, 12);
             buttonAddRow_MAD.Name = "buttonAddRow_MAD";
             buttonAddRow_MAD.Size = new Size(52, 50);
             buttonAddRow_MAD.TabIndex = 1;
@@ -214,6 +216,16 @@
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
             toolTip1.ToolTipTitle = "Подсказка";
             // 
+            // buttonDeleteRow_MAD
+            // 
+            buttonDeleteRow_MAD.Image = (Image)resources.GetObject("buttonDeleteRow_MAD.Image");
+            buttonDeleteRow_MAD.Location = new Point(181, 12);
+            buttonDeleteRow_MAD.Name = "buttonDeleteRow_MAD";
+            buttonDeleteRow_MAD.Size = new Size(52, 50);
+            buttonDeleteRow_MAD.TabIndex = 1;
+            buttonDeleteRow_MAD.UseVisualStyleBackColor = true;
+            buttonDeleteRow_MAD.Click += buttonDeleteRow_MAD_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -256,5 +268,6 @@
         private Button buttonAddRow_MAD;
         private ToolTip toolTip1;
         private Splitter splitter2;
+        private Button buttonDeleteRow_MAD;
     }
 }
