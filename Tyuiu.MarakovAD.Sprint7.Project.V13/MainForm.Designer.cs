@@ -36,6 +36,7 @@
             btnAbout_MAD = new Button();
             openFileDialogInputCSVFile_MAD = new OpenFileDialog();
             panel1 = new Panel();
+            buttonDeleteRow_MAD = new Button();
             buttonAddRow_MAD = new Button();
             panel2 = new Panel();
             groupBoxDataTable_MAD = new GroupBox();
@@ -47,7 +48,6 @@
             groupBoxGraph_MAD = new GroupBox();
             saveFileDialogOutputCSVFile_MAD = new SaveFileDialog();
             toolTip1 = new ToolTip(components);
-            buttonDeleteRow_MAD = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -116,6 +116,17 @@
             panel1.Size = new Size(801, 75);
             panel1.TabIndex = 2;
             // 
+            // buttonDeleteRow_MAD
+            // 
+            buttonDeleteRow_MAD.Image = (Image)resources.GetObject("buttonDeleteRow_MAD.Image");
+            buttonDeleteRow_MAD.Location = new Point(181, 12);
+            buttonDeleteRow_MAD.Name = "buttonDeleteRow_MAD";
+            buttonDeleteRow_MAD.Size = new Size(52, 50);
+            buttonDeleteRow_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonDeleteRow_MAD, "Удалить строку\r\nУдаляет строку у текущей таблицы");
+            buttonDeleteRow_MAD.UseVisualStyleBackColor = true;
+            buttonDeleteRow_MAD.Click += buttonDeleteRow_MAD_Click;
+            // 
             // buttonAddRow_MAD
             // 
             buttonAddRow_MAD.Image = (Image)resources.GetObject("buttonAddRow_MAD.Image");
@@ -123,7 +134,7 @@
             buttonAddRow_MAD.Name = "buttonAddRow_MAD";
             buttonAddRow_MAD.Size = new Size(52, 50);
             buttonAddRow_MAD.TabIndex = 1;
-            toolTip1.SetToolTip(buttonAddRow_MAD, "Добавить строку\r\nДобавляет строку к существующей таблице");
+            toolTip1.SetToolTip(buttonAddRow_MAD, "Добавить строку\r\nДобавляет строку к текущей таблице");
             buttonAddRow_MAD.UseVisualStyleBackColor = true;
             buttonAddRow_MAD.Click += buttonAddRow_MAD_Click;
             // 
@@ -215,16 +226,6 @@
             // 
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
             toolTip1.ToolTipTitle = "Подсказка";
-            // 
-            // buttonDeleteRow_MAD
-            // 
-            buttonDeleteRow_MAD.Image = (Image)resources.GetObject("buttonDeleteRow_MAD.Image");
-            buttonDeleteRow_MAD.Location = new Point(181, 12);
-            buttonDeleteRow_MAD.Name = "buttonDeleteRow_MAD";
-            buttonDeleteRow_MAD.Size = new Size(52, 50);
-            buttonDeleteRow_MAD.TabIndex = 1;
-            buttonDeleteRow_MAD.UseVisualStyleBackColor = true;
-            buttonDeleteRow_MAD.Click += buttonDeleteRow_MAD_Click;
             // 
             // Form1
             // 
