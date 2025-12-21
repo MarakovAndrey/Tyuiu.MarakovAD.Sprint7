@@ -30,6 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             dataGridViewDataTable_MAD = new DataGridView();
             btnLoadCSVFile_MAD = new Button();
             buttonSaveFile_MAD = new Button();
@@ -44,12 +48,14 @@
             splitter2 = new Splitter();
             panel3 = new Panel();
             groupBoxStatisics_MAD = new GroupBox();
+            textBoxStatistics_MAD = new TextBox();
             splitter1 = new Splitter();
             panel4 = new Panel();
             groupBoxGraph_MAD = new GroupBox();
+            chartAreaStatistics_MAD = new System.Windows.Forms.DataVisualization.Charting.Chart();
             saveFileDialogOutputCSVFile_MAD = new SaveFileDialog();
             toolTip1 = new ToolTip(components);
-            textBoxStatistics_MAD = new TextBox();
+            buttonUpdateChart_MAD = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -57,6 +63,8 @@
             panel3.SuspendLayout();
             groupBoxStatisics_MAD.SuspendLayout();
             panel4.SuspendLayout();
+            groupBoxGraph_MAD.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartAreaStatistics_MAD).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewDataTable_MAD
@@ -110,6 +118,7 @@
             panel1.BackColor = SystemColors.ControlLight;
             panel1.Controls.Add(btnAbout_MAD);
             panel1.Controls.Add(btnLoadCSVFile_MAD);
+            panel1.Controls.Add(buttonUpdateChart_MAD);
             panel1.Controls.Add(buttonGetStatistics_MAD);
             panel1.Controls.Add(buttonDeleteRow_MAD);
             panel1.Controls.Add(buttonAddRow_MAD);
@@ -209,6 +218,18 @@
             groupBoxStatisics_MAD.TabStop = false;
             groupBoxStatisics_MAD.Text = "Статистика";
             // 
+            // textBoxStatistics_MAD
+            // 
+            textBoxStatistics_MAD.BackColor = SystemColors.Control;
+            textBoxStatistics_MAD.Dock = DockStyle.Fill;
+            textBoxStatistics_MAD.Location = new Point(7, 23);
+            textBoxStatistics_MAD.Multiline = true;
+            textBoxStatistics_MAD.Name = "textBoxStatistics_MAD";
+            textBoxStatistics_MAD.ReadOnly = true;
+            textBoxStatistics_MAD.ScrollBars = ScrollBars.Vertical;
+            textBoxStatistics_MAD.Size = new Size(381, 329);
+            textBoxStatistics_MAD.TabIndex = 0;
+            // 
             // splitter1
             // 
             splitter1.Location = new Point(395, 450);
@@ -230,6 +251,7 @@
             // groupBoxGraph_MAD
             // 
             groupBoxGraph_MAD.BackColor = SystemColors.Control;
+            groupBoxGraph_MAD.Controls.Add(chartAreaStatistics_MAD);
             groupBoxGraph_MAD.Dock = DockStyle.Fill;
             groupBoxGraph_MAD.Location = new Point(0, 0);
             groupBoxGraph_MAD.Name = "groupBoxGraph_MAD";
@@ -238,21 +260,42 @@
             groupBoxGraph_MAD.TabStop = false;
             groupBoxGraph_MAD.Text = "График";
             // 
+            // chartAreaStatistics_MAD
+            // 
+            chartArea1.Name = "ChartArea1";
+            chartAreaStatistics_MAD.ChartAreas.Add(chartArea1);
+            chartAreaStatistics_MAD.Dock = DockStyle.Fill;
+            legend1.Name = "Legend1";
+            chartAreaStatistics_MAD.Legends.Add(legend1);
+            chartAreaStatistics_MAD.Location = new Point(3, 19);
+            chartAreaStatistics_MAD.Name = "chartAreaStatistics_MAD";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartAreaStatistics_MAD.Series.Add(series1);
+            chartAreaStatistics_MAD.Size = new Size(397, 337);
+            chartAreaStatistics_MAD.TabIndex = 0;
+            chartAreaStatistics_MAD.Text = "chart1";
+            title1.Name = "Title1";
+            title1.Text = "Сравнение площадей стран";
+            chartAreaStatistics_MAD.Titles.Add(title1);
+            // 
             // toolTip1
             // 
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
             toolTip1.ToolTipTitle = "Подсказка";
             // 
-            // textBoxStatistics_MAD
+            // buttonUpdateChart_MAD
             // 
-            textBoxStatistics_MAD.BackColor = SystemColors.Control;
-            textBoxStatistics_MAD.Location = new Point(7, 17);
-            textBoxStatistics_MAD.Multiline = true;
-            textBoxStatistics_MAD.Name = "textBoxStatistics_MAD";
-            textBoxStatistics_MAD.ReadOnly = true;
-            textBoxStatistics_MAD.ScrollBars = ScrollBars.Vertical;
-            textBoxStatistics_MAD.Size = new Size(378, 330);
-            textBoxStatistics_MAD.TabIndex = 0;
+            buttonUpdateChart_MAD.Image = (Image)resources.GetObject("buttonUpdateChart_MAD.Image");
+            buttonUpdateChart_MAD.Location = new Point(297, 12);
+            buttonUpdateChart_MAD.Name = "buttonUpdateChart_MAD";
+            buttonUpdateChart_MAD.Size = new Size(52, 50);
+            buttonUpdateChart_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonUpdateChart_MAD, "Обновить график\r\nОбновляет график до текущего состояния таблицы");
+            buttonUpdateChart_MAD.UseVisualStyleBackColor = true;
+            buttonUpdateChart_MAD.Click += buttonUpdateChart_MAD_Click;
             // 
             // Form1
             // 
@@ -276,6 +319,8 @@
             groupBoxStatisics_MAD.ResumeLayout(false);
             groupBoxStatisics_MAD.PerformLayout();
             panel4.ResumeLayout(false);
+            groupBoxGraph_MAD.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartAreaStatistics_MAD).EndInit();
             ResumeLayout(false);
         }
 
@@ -301,5 +346,7 @@
         private Button buttonDeleteRow_MAD;
         private Button buttonGetStatistics_MAD;
         private TextBox textBoxStatistics_MAD;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartAreaStatistics_MAD;
+        private Button buttonUpdateChart_MAD;
     }
 }

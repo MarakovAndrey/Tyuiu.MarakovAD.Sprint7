@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Tyuiu.MarakovAD.Sprint7.Project.V13.Lib;
 namespace Tyuiu.MarakovAD.Sprint7.Project.V13
 {
@@ -111,7 +112,7 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
         {
             try
             {
-                if (ds.Countries.Count == 0)
+                if (ds.Countries.Count != 0)
                 {
                     string Statistics = ds.GetStatisticsArea() + ds.GetStatisticsPopulation() + ds.GetStatisticsDeveloped();
                     textBoxStatistics_MAD.Text = Statistics;
@@ -124,6 +125,26 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
             catch {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonUpdateChart_MAD_Click(object sender, EventArgs e)
+        {
+            chartAreaStatistics_MAD.Series.Clear();
+
+            if (ds.Countries.Count == 0) {
+                chartAreaStatistics_MAD.Titles.Add("Нет данных!");
+            }
+
+            Series dataSeries = new Series();
+            dataSeries.ChartType = SeriesChartType.Pie;
+            dataSeries.Name = "Площадь";
+
+            foreach (Country country in ds.Countries) {
+                dataSeries.Points.AddXY(country.Name, country.Area);
+            }
+
+            chartAreaStatistics_MAD.Series.Add(dataSeries);
+            chartAreaStatistics_MAD.Legends[0].Enabled = true;
         }
     }
 }
