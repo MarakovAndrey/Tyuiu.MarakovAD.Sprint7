@@ -8,7 +8,6 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
         public Form1()
         {
             InitializeComponent();
-            openFileDialogInputCSVFile_MAD.Filter = "Значения, разделенные точкой с запятой(*.csv)|*.csv|Все файлы(*.*)|*.*";
             SetupDataGridView();
             dataGridViewDataTable_MAD.AutoGenerateColumns = true;
             dataGridViewDataTable_MAD.AllowUserToAddRows = false;
@@ -31,6 +30,7 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
         {
             try
             {
+                openFileDialogInputCSVFile_MAD.Filter = "Значения, разделенные точкой с запятой(*.csv)|*.csv|Все файлы(*.*)|*.*";
                 if (openFileDialogInputCSVFile_MAD.ShowDialog() == DialogResult.OK)
                 {
                     ds.LoadFromCsv(openFileDialogInputCSVFile_MAD.FileName);
@@ -91,15 +91,39 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
 
         private void buttonDeleteRow_MAD_Click(object sender, EventArgs e)
         {
-            if (ds.Countries.Count == 0) {
-                MessageBox.Show("Таблица пуста", "Инфорация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+            try
+            {
+                if (ds.Countries.Count == 0)
+                {
+                    MessageBox.Show("Таблица пуста", "Инфорация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                int lastIndex = ds.Countries.Count - 1;
+                var lastCountry = ds.Countries[lastIndex];
+                ds.Countries.RemoveAt(lastIndex);
             }
-
-            int lastIndex = ds.Countries.Count - 1;
-            var lastCountry = ds.Countries[lastIndex];
-            ds.Countries.RemoveAt(lastIndex);
+            catch {
+                MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void buttonGetStatistics_MAD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ds.Countries.Count == 0)
+                {
+                    string Statistics = ds.GetStatisticsArea() + ds.GetStatisticsPopulation() + ds.GetStatisticsDeveloped();
+                    textBoxStatistics_MAD.Text = Statistics;
+                }
+                else
+                {
+                    textBoxStatistics_MAD.Text = "Данные не загружены!";
+                }
+            }
+            catch {
+                MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

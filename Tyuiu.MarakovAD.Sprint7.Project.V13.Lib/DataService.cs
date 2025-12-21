@@ -39,6 +39,8 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Lib
             }
         }
 
+
+
         public void SaveToCsv(string filePath) {
             var lines = new List<string> {
                 "Название;Столица;Площадь;Население;Плотность населения;Преобладающая национальность;Развитая"
@@ -49,8 +51,81 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Lib
                     $"{country.Population};{country.Population_density};{country.MainNationality};" +
                     $"{country.IsDeveloped};");
             }
-
             File.WriteAllLines(filePath, lines, System.Text.Encoding.UTF8);
+        }
+
+
+
+        public string GetStatisticsArea() {
+            string result = "";
+
+            result += "----------ПЛОЩАДЬ---------- \r\n\r\n";
+
+            double maxArea = 0;
+            string maxAreaName = "";
+            foreach (Country country in Countries) {
+                if (country.Area > maxArea) {
+                    maxArea = country.Area;
+                    maxAreaName = country.Name;
+                }
+            }
+            result += $"Самая большая: {maxAreaName} ({maxArea} км²) \r\n";
+
+            double minArea = 999999999;
+            string minAreaName = "";
+            foreach (Country country in Countries) {
+                if (country.Area < minArea && country.Area > 0) {
+                    minArea = country.Area;
+                    minAreaName = country.Name;
+                }
+            }
+            result += $"Самая маленькая: {minAreaName} ({minArea} км²) \r\n\r\n";
+            return result;
+        }
+
+
+
+        public string GetStatisticsPopulation() {
+            string result = "";
+
+            result += "----------НАСЕЛЕНИЕ----------\r\n\r\n";
+
+            int maxPopulation = 0;
+            string maxPopulationName = "";
+            foreach (Country country in Countries) {
+                if (country.Population > maxPopulation) {
+                    maxPopulation = country.Population;
+                    maxPopulationName = country.Name;
+                }
+            }
+            result += $"Самое большое население: {maxPopulationName} ({maxPopulation} чел.) \r\n";
+
+            int minPopulation = 999999999;
+            string minPopulationName = "";
+            foreach (Country country in Countries) {
+                if (country.Population < minPopulation && country.Population > 0) {
+                    minPopulation = country.Population;
+                    minPopulationName = country.Name;
+                }
+            }
+            result += $"Самое маленькое население: {minPopulationName} ({minPopulation} чел.) \r\n\r\n";
+            return result;
+        }
+
+
+        public string GetStatisticsDeveloped() {
+            string result = "";
+
+            result += "----------РАЗВИТОСТЬ----------\r\n\r\n";
+            int developed = 0;
+            foreach (Country country in Countries){
+                if (country.IsDeveloped == true){
+                    developed++;
+                }
+            }
+            result += $"Развитых стран: {developed} из {Countries.Count}";
+
+            return result;
         }
     }
 }

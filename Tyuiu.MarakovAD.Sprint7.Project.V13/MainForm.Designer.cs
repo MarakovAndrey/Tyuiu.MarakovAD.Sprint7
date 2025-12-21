@@ -36,6 +36,7 @@
             btnAbout_MAD = new Button();
             openFileDialogInputCSVFile_MAD = new OpenFileDialog();
             panel1 = new Panel();
+            buttonGetStatistics_MAD = new Button();
             buttonDeleteRow_MAD = new Button();
             buttonAddRow_MAD = new Button();
             panel2 = new Panel();
@@ -48,11 +49,13 @@
             groupBoxGraph_MAD = new GroupBox();
             saveFileDialogOutputCSVFile_MAD = new SaveFileDialog();
             toolTip1 = new ToolTip(components);
+            textBoxStatistics_MAD = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             groupBoxDataTable_MAD.SuspendLayout();
             panel3.SuspendLayout();
+            groupBoxStatisics_MAD.SuspendLayout();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -107,6 +110,7 @@
             panel1.BackColor = SystemColors.ControlLight;
             panel1.Controls.Add(btnAbout_MAD);
             panel1.Controls.Add(btnLoadCSVFile_MAD);
+            panel1.Controls.Add(buttonGetStatistics_MAD);
             panel1.Controls.Add(buttonDeleteRow_MAD);
             panel1.Controls.Add(buttonAddRow_MAD);
             panel1.Controls.Add(buttonSaveFile_MAD);
@@ -115,6 +119,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(801, 75);
             panel1.TabIndex = 2;
+            // 
+            // buttonGetStatistics_MAD
+            // 
+            buttonGetStatistics_MAD.Image = (Image)resources.GetObject("buttonGetStatistics_MAD.Image");
+            buttonGetStatistics_MAD.Location = new Point(239, 12);
+            buttonGetStatistics_MAD.Name = "buttonGetStatistics_MAD";
+            buttonGetStatistics_MAD.Size = new Size(52, 50);
+            buttonGetStatistics_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonGetStatistics_MAD, "Обновить статистику\r\nОбновляет статистику до текущего состояния таблицы");
+            buttonGetStatistics_MAD.UseVisualStyleBackColor = true;
+            buttonGetStatistics_MAD.Click += buttonGetStatistics_MAD_Click;
             // 
             // buttonDeleteRow_MAD
             // 
@@ -184,6 +199,7 @@
             // groupBoxStatisics_MAD
             // 
             groupBoxStatisics_MAD.BackColor = SystemColors.Control;
+            groupBoxStatisics_MAD.Controls.Add(textBoxStatistics_MAD);
             groupBoxStatisics_MAD.Dock = DockStyle.Fill;
             groupBoxStatisics_MAD.Location = new Point(0, 0);
             groupBoxStatisics_MAD.Name = "groupBoxStatisics_MAD";
@@ -227,6 +243,17 @@
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
             toolTip1.ToolTipTitle = "Подсказка";
             // 
+            // textBoxStatistics_MAD
+            // 
+            textBoxStatistics_MAD.BackColor = SystemColors.Control;
+            textBoxStatistics_MAD.Location = new Point(7, 17);
+            textBoxStatistics_MAD.Multiline = true;
+            textBoxStatistics_MAD.Name = "textBoxStatistics_MAD";
+            textBoxStatistics_MAD.ReadOnly = true;
+            textBoxStatistics_MAD.ScrollBars = ScrollBars.Vertical;
+            textBoxStatistics_MAD.Size = new Size(378, 330);
+            textBoxStatistics_MAD.TabIndex = 0;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -246,6 +273,8 @@
             panel2.ResumeLayout(false);
             groupBoxDataTable_MAD.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            groupBoxStatisics_MAD.ResumeLayout(false);
+            groupBoxStatisics_MAD.PerformLayout();
             panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -270,5 +299,7 @@
         private ToolTip toolTip1;
         private Splitter splitter2;
         private Button buttonDeleteRow_MAD;
+        private Button buttonGetStatistics_MAD;
+        private TextBox textBoxStatistics_MAD;
     }
 }

@@ -232,6 +232,29 @@
   <metadata name="openFileDialogInputCSVFile_MAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="buttonGetStatistics_MAD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAPsSURBVFhHxZfLUlxVFIbPwAytcqIvobHKqRpCgpZl
+        EJoYEAMJAkoICWLQ6NjLM5CUDsLlGXwLzYiRSpkATV9On/t9n0v/1r+b00mre0Bj4676a/U6Z+31/ed0
+        rd3VmqZpL2xvb/+8s7ODra0tbG5uDlRkkEUm2ZqmaS/ywlkvMsmmgZfpiuvPJ/t48nSwIoOLTLJp4BW+
+        Gq6n+wfYPzjEwWF1IGJvMrjIJLvHwP5BFYfVo4GKDKWBg+oRqke1gYoMpQEWHNXqUrVaHfX6MzEv751G
+        ZCgNsKBWb0jpzQZcU0dg6zLqzSbqjSYaTb0v1RpN2ZcMpYF6vYFGoylhvqljfGMX579/LKNvtWAaBlzH
+        he8HHXk+PM+H63o98jzK79ZxT6tlyN5kKA2woNnU0dJ1xI6Bd3/6A5XNPRlj14TrOBi6eAmjYxVcm/wI
+        M7NzWFhcwsqdVXyxfh/r97/BndU1LC4t4+bcPKamr2NsfALDl0Zg2w50vSUZSgOEs8hotRA6JiY2dvH6
+        D49lZG5blnyyMIw6CkIEQfjsjRwroIKwW8c9pmnJ3mQoDehGCy3DgGEYsC0TkWdBBJaMzA3ThGlZfYl7
+        2ZsMpYGW2YF0QCZs24LrWDIyL++dRmQoDZRuLYtgG0ngII9cGZlbtg3bcfoS95b9lQZYRDmODRG68rt/
+        7btfZWTu+z7iJIFI0+ckkAghr1OJoERPDa+7ntftrzRgO66U67ooEh/v/Pg7Ko/2ZGyLAEmS4O0Lw3h/
+        dBwfXpvC9ZkbmF/4FMu372Lt3pe499XXuH33cyx8dguzNz7B5NQ0Phir4OLwZYRRDNv1ZH+lgXKOfc9D
+        HgeYeLCL83wDD3ZRxAGiMEKaZijyQiqXypFlObI06yjLkVPd+4Xcw6ko+ysNcFzkAeL5iIIARRICaSQj
+        czlix6N3UnFv2V9poGeWAz5xiCQKZWT+93nvV0oDpVseMEkUAWkMFImMIu4cKlEU96UwiLr9lQZCQqII
+        cRxJcGVjF69++4uMKATSLEVbVp5scQ+nRfZnb5WBKEkQxTESEQNIMfLwN4w/2pMRyGSrN98awntXxjBx
+        dRLTH89ibn4Rt5ZXsLq2Ln8PlldWMb+4hJnZm/L34sroOC4MDaNot+U4kqE0IISQo5aKBGinuPqwcw4w
+        0kBR5M8918lWnmcQPEOEkPm/Gkh5cAiBVAi08/T4qQnNZJ6lKbKMo3ZydXun7KswUBZShOVZijzvRObl
+        vdOIDKWBzqHyT/f/pchQGiiKzsk2SJGhNHCWq8fA//jXrGvA5wW6OguRRWZp4CVN097QNO2ypmkjZySy
+        yCRbO3f8gW7OUmSe+wufw7uPcN4cXgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="buttonDeleteRow_MAD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAACGRJREFUWEel
