@@ -40,6 +40,10 @@
             btnAbout_MAD = new Button();
             openFileDialogInputCSVFile_MAD = new OpenFileDialog();
             panel1 = new Panel();
+            groupBoxSortPopulation_MAD = new GroupBox();
+            buttonSortPopulationLowToHigh_MAD = new Button();
+            buttonSortPopulationHighToLow_MAD = new Button();
+            buttonUpdateChart_MAD = new Button();
             buttonGetStatistics_MAD = new Button();
             buttonDeleteRow_MAD = new Button();
             buttonAddRow_MAD = new Button();
@@ -55,9 +59,9 @@
             chartAreaStatistics_MAD = new System.Windows.Forms.DataVisualization.Charting.Chart();
             saveFileDialogOutputCSVFile_MAD = new SaveFileDialog();
             toolTip1 = new ToolTip(components);
-            buttonUpdateChart_MAD = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).BeginInit();
             panel1.SuspendLayout();
+            groupBoxSortPopulation_MAD.SuspendLayout();
             panel2.SuspendLayout();
             groupBoxDataTable_MAD.SuspendLayout();
             panel3.SuspendLayout();
@@ -116,6 +120,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(groupBoxSortPopulation_MAD);
             panel1.Controls.Add(btnAbout_MAD);
             panel1.Controls.Add(btnLoadCSVFile_MAD);
             panel1.Controls.Add(buttonUpdateChart_MAD);
@@ -128,6 +133,48 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(801, 75);
             panel1.TabIndex = 2;
+            // 
+            // groupBoxSortPopulation_MAD
+            // 
+            groupBoxSortPopulation_MAD.Controls.Add(buttonSortPopulationLowToHigh_MAD);
+            groupBoxSortPopulation_MAD.Controls.Add(buttonSortPopulationHighToLow_MAD);
+            groupBoxSortPopulation_MAD.Location = new Point(355, 3);
+            groupBoxSortPopulation_MAD.Name = "groupBoxSortPopulation_MAD";
+            groupBoxSortPopulation_MAD.Size = new Size(172, 66);
+            groupBoxSortPopulation_MAD.TabIndex = 2;
+            groupBoxSortPopulation_MAD.TabStop = false;
+            groupBoxSortPopulation_MAD.Text = "Сортировка по населению";
+            // 
+            // buttonSortPopulationLowToHigh_MAD
+            // 
+            buttonSortPopulationLowToHigh_MAD.Image = (Image)resources.GetObject("buttonSortPopulationLowToHigh_MAD.Image");
+            buttonSortPopulationLowToHigh_MAD.Location = new Point(63, 14);
+            buttonSortPopulationLowToHigh_MAD.Name = "buttonSortPopulationLowToHigh_MAD";
+            buttonSortPopulationLowToHigh_MAD.Size = new Size(52, 50);
+            buttonSortPopulationLowToHigh_MAD.TabIndex = 1;
+            buttonSortPopulationLowToHigh_MAD.UseVisualStyleBackColor = true;
+            buttonSortPopulationLowToHigh_MAD.Click += buttonSortPopulationLowToHigh_MAD_Click;
+            // 
+            // buttonSortPopulationHighToLow_MAD
+            // 
+            buttonSortPopulationHighToLow_MAD.Image = (Image)resources.GetObject("buttonSortPopulationHighToLow_MAD.Image");
+            buttonSortPopulationHighToLow_MAD.Location = new Point(5, 14);
+            buttonSortPopulationHighToLow_MAD.Name = "buttonSortPopulationHighToLow_MAD";
+            buttonSortPopulationHighToLow_MAD.Size = new Size(52, 50);
+            buttonSortPopulationHighToLow_MAD.TabIndex = 1;
+            buttonSortPopulationHighToLow_MAD.UseVisualStyleBackColor = true;
+            buttonSortPopulationHighToLow_MAD.Click += buttonSortPopulationHighToLow_MAD_Click;
+            // 
+            // buttonUpdateChart_MAD
+            // 
+            buttonUpdateChart_MAD.Image = (Image)resources.GetObject("buttonUpdateChart_MAD.Image");
+            buttonUpdateChart_MAD.Location = new Point(297, 12);
+            buttonUpdateChart_MAD.Name = "buttonUpdateChart_MAD";
+            buttonUpdateChart_MAD.Size = new Size(52, 50);
+            buttonUpdateChart_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonUpdateChart_MAD, "Обновить график\r\nОбновляет график до текущего состояния таблицы");
+            buttonUpdateChart_MAD.UseVisualStyleBackColor = true;
+            buttonUpdateChart_MAD.Click += buttonUpdateChart_MAD_Click;
             // 
             // buttonGetStatistics_MAD
             // 
@@ -286,17 +333,6 @@
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
             toolTip1.ToolTipTitle = "Подсказка";
             // 
-            // buttonUpdateChart_MAD
-            // 
-            buttonUpdateChart_MAD.Image = (Image)resources.GetObject("buttonUpdateChart_MAD.Image");
-            buttonUpdateChart_MAD.Location = new Point(297, 12);
-            buttonUpdateChart_MAD.Name = "buttonUpdateChart_MAD";
-            buttonUpdateChart_MAD.Size = new Size(52, 50);
-            buttonUpdateChart_MAD.TabIndex = 1;
-            toolTip1.SetToolTip(buttonUpdateChart_MAD, "Обновить график\r\nОбновляет график до текущего состояния таблицы");
-            buttonUpdateChart_MAD.UseVisualStyleBackColor = true;
-            buttonUpdateChart_MAD.Click += buttonUpdateChart_MAD_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -313,6 +349,7 @@
             Text = "География";
             ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).EndInit();
             panel1.ResumeLayout(false);
+            groupBoxSortPopulation_MAD.ResumeLayout(false);
             panel2.ResumeLayout(false);
             groupBoxDataTable_MAD.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -348,5 +385,8 @@
         private TextBox textBoxStatistics_MAD;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartAreaStatistics_MAD;
         private Button buttonUpdateChart_MAD;
+        private Button buttonSortPopulationHighToLow_MAD;
+        private Button buttonSortPopulationLowToHigh_MAD;
+        private GroupBox groupBoxSortPopulation_MAD;
     }
 }

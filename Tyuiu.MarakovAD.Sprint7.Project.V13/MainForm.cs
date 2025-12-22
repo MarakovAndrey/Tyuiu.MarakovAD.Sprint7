@@ -129,22 +129,55 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
 
         private void buttonUpdateChart_MAD_Click(object sender, EventArgs e)
         {
-            chartAreaStatistics_MAD.Series.Clear();
+            try
+            {
+                chartAreaStatistics_MAD.Series.Clear();
 
-            if (ds.Countries.Count == 0) {
-                chartAreaStatistics_MAD.Titles.Add("Нет данных!");
+                if (ds.Countries.Count == 0)
+                {
+                    chartAreaStatistics_MAD.Titles.Clear();
+                    chartAreaStatistics_MAD.Titles.Add("Нет данных!");
+                }
+
+                Series dataSeries = new Series();
+                dataSeries.ChartType = SeriesChartType.Pie;
+                dataSeries.Name = "Площадь";
+
+                foreach (Country country in ds.Countries)
+                {
+                    dataSeries.Points.AddXY(country.Name, country.Area);
+                }
+
+                chartAreaStatistics_MAD.Series.Add(dataSeries);
+                chartAreaStatistics_MAD.Legends[0].Enabled = true;
             }
-
-            Series dataSeries = new Series();
-            dataSeries.ChartType = SeriesChartType.Pie;
-            dataSeries.Name = "Площадь";
-
-            foreach (Country country in ds.Countries) {
-                dataSeries.Points.AddXY(country.Name, country.Area);
+            catch {
+                MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
-            chartAreaStatistics_MAD.Series.Add(dataSeries);
-            chartAreaStatistics_MAD.Legends[0].Enabled = true;
+        private void buttonSortPopulationHighToLow_MAD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ds.SortPopulationHighToLow();
+                MessageBox.Show("Отсортировано по убыванию населения!");
+            }
+            catch {
+                MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonSortPopulationLowToHigh_MAD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ds.SortPopulationLowToHigh();
+                MessageBox.Show("Отсортировано по возрастанию населения!");
+            }
+            catch {
+                MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -127,5 +127,65 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Lib
 
             return result;
         }
+
+
+        public void SortPopulationHighToLow() { 
+            List<Country> tempList = new List<Country>();
+
+            foreach (Country c in Countries) { 
+                tempList.Add(c);
+            }
+
+            for (int i = 0; i < tempList.Count - 1; i++)
+            {
+                for (int j = i + 1; j < tempList.Count; j++)
+                {
+                    if (tempList[i].Population < tempList[j].Population)
+                    {
+                        Country temp = tempList[i];
+                        tempList[i] = tempList[j];
+                        tempList[j] = temp;
+                    }
+                }
+            }
+
+            Countries.Clear();
+
+            foreach (Country c in tempList) { 
+                Countries.Add(c);
+            }
+        }
+
+
+
+        public void SortPopulationLowToHigh()
+        {
+            List<Country> tempList = new List<Country>();
+
+            foreach (Country c in Countries)
+            {
+                tempList.Add(c);
+            }
+
+            for (int i = 0; i < tempList.Count - 1; i++)
+            {
+                for (int j = i + 1; j < tempList.Count; j++)
+                {
+                    if (tempList[i].Population > tempList[j].Population)
+                    {
+                        Country temp = tempList[i];
+                        tempList[i] = tempList[j];
+                        tempList[j] = temp;
+                    }
+                }
+            }
+
+            Countries.Clear();
+
+            foreach (Country c in tempList)
+            {
+                Countries.Add(c);
+            }
+        }
     }
 }
