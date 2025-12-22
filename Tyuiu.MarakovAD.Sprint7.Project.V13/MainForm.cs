@@ -161,7 +161,7 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
             try
             {
                 ds.SortPopulationHighToLow();
-                MessageBox.Show("Отсортировано по убыванию населения!");
+                MessageBox.Show("Отсортировано по убыванию населения!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -173,10 +173,100 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
             try
             {
                 ds.SortPopulationLowToHigh();
-                MessageBox.Show("Отсортировано по возрастанию населения!");
+                MessageBox.Show("Отсортировано по возрастанию населения!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void buttonSearch_MAD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form searchDialog = new Form
+                {
+                    Text = "Поиск страны",
+                    Size = new Size(300, 150),
+                    StartPosition = FormStartPosition.CenterParent,
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    MaximizeBox = false,
+                    MinimizeBox = false
+                };
+
+                // Текстовое поле для ввода
+                TextBox txtSearch = new TextBox
+                {
+                    Location = new Point(20, 30),
+                    Size = new Size(240, 30),
+                    Font = new Font("Segoe UI", 9)
+                };
+
+                // Кнопка "Найти"
+                Button btnFind = new Button
+                {
+                    Text = "Найти",
+                    Location = new Point(80, 70),
+                    Size = new Size(80, 30),
+                    DialogResult = DialogResult.OK
+                };
+
+                // Кнопка "Отмена"
+                Button btnCancel = new Button
+                {
+                    Text = "Отмена",
+                    Location = new Point(170, 70),
+                    Size = new Size(80, 30),
+                    DialogResult = DialogResult.Cancel
+                };
+
+                // Добавляем элементы
+                searchDialog.Controls.Add(txtSearch);
+                searchDialog.Controls.Add(btnFind);
+                searchDialog.Controls.Add(btnCancel);
+                searchDialog.AcceptButton = btnFind;
+                searchDialog.CancelButton = btnCancel;
+
+                // Показываем диалог
+                if (searchDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string searchText = txtSearch.Text;
+
+                    if (string.IsNullOrEmpty(searchText))
+                    {
+                        MessageBox.Show("Введите название страны для поиска", "Ошибка");
+                        return;
+                    }
+
+                    // Ищем страну
+                    int index = ds.FindCountryName(searchText);
+
+                    if (index >= 0)
+                    {
+                        // Нашли - выделяем строку
+                        SelectRow(index);
+
+                        MessageBox.Show($"Найдена страна: {ds.Countries[index].Name}",
+                                       "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Страна '{searchText}' не найдена",
+                                       "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch {
+                MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SelectRow(int rowIndex) {
+            if (rowIndex >= 0 && rowIndex < dataGridViewDataTable_MAD.Rows.Count) { 
+                dataGridViewDataTable_MAD.ClearSelection();
+                dataGridViewDataTable_MAD.Rows[rowIndex].Selected = true;
             }
         }
     }

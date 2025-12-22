@@ -40,9 +40,11 @@
             btnAbout_MAD = new Button();
             openFileDialogInputCSVFile_MAD = new OpenFileDialog();
             panel1 = new Panel();
+            checkBoxOnlyDeveloped_MAD = new CheckBox();
             groupBoxSortPopulation_MAD = new GroupBox();
             buttonSortPopulationLowToHigh_MAD = new Button();
             buttonSortPopulationHighToLow_MAD = new Button();
+            buttonSearch_MAD = new Button();
             buttonUpdateChart_MAD = new Button();
             buttonGetStatistics_MAD = new Button();
             buttonDeleteRow_MAD = new Button();
@@ -109,7 +111,7 @@
             btnAbout_MAD.Name = "btnAbout_MAD";
             btnAbout_MAD.Size = new Size(52, 50);
             btnAbout_MAD.TabIndex = 1;
-            toolTip1.SetToolTip(btnAbout_MAD, "Справка\r\nИнформация о создателе");
+            toolTip1.SetToolTip(btnAbout_MAD, "Справка\r\nРуководство пользователя\r\nИнформация о создателе");
             btnAbout_MAD.UseVisualStyleBackColor = true;
             btnAbout_MAD.Click += btnAbout_MAD_Click;
             // 
@@ -120,9 +122,11 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(checkBoxOnlyDeveloped_MAD);
             panel1.Controls.Add(groupBoxSortPopulation_MAD);
             panel1.Controls.Add(btnAbout_MAD);
             panel1.Controls.Add(btnLoadCSVFile_MAD);
+            panel1.Controls.Add(buttonSearch_MAD);
             panel1.Controls.Add(buttonUpdateChart_MAD);
             panel1.Controls.Add(buttonGetStatistics_MAD);
             panel1.Controls.Add(buttonDeleteRow_MAD);
@@ -134,11 +138,22 @@
             panel1.Size = new Size(801, 75);
             panel1.TabIndex = 2;
             // 
+            // checkBoxOnlyDeveloped_MAD
+            // 
+            checkBoxOnlyDeveloped_MAD.AutoSize = true;
+            checkBoxOnlyDeveloped_MAD.Location = new Point(591, 29);
+            checkBoxOnlyDeveloped_MAD.Name = "checkBoxOnlyDeveloped_MAD";
+            checkBoxOnlyDeveloped_MAD.Size = new Size(123, 19);
+            checkBoxOnlyDeveloped_MAD.TabIndex = 3;
+            checkBoxOnlyDeveloped_MAD.Text = "Только развитые ";
+            toolTip1.SetToolTip(checkBoxOnlyDeveloped_MAD, "Фильтр\r\nОставляет только развитые страны");
+            checkBoxOnlyDeveloped_MAD.UseVisualStyleBackColor = true;
+            // 
             // groupBoxSortPopulation_MAD
             // 
             groupBoxSortPopulation_MAD.Controls.Add(buttonSortPopulationLowToHigh_MAD);
             groupBoxSortPopulation_MAD.Controls.Add(buttonSortPopulationHighToLow_MAD);
-            groupBoxSortPopulation_MAD.Location = new Point(355, 3);
+            groupBoxSortPopulation_MAD.Location = new Point(413, 3);
             groupBoxSortPopulation_MAD.Name = "groupBoxSortPopulation_MAD";
             groupBoxSortPopulation_MAD.Size = new Size(172, 66);
             groupBoxSortPopulation_MAD.TabIndex = 2;
@@ -148,22 +163,35 @@
             // buttonSortPopulationLowToHigh_MAD
             // 
             buttonSortPopulationLowToHigh_MAD.Image = (Image)resources.GetObject("buttonSortPopulationLowToHigh_MAD.Image");
-            buttonSortPopulationLowToHigh_MAD.Location = new Point(63, 14);
+            buttonSortPopulationLowToHigh_MAD.Location = new Point(89, 14);
             buttonSortPopulationLowToHigh_MAD.Name = "buttonSortPopulationLowToHigh_MAD";
             buttonSortPopulationLowToHigh_MAD.Size = new Size(52, 50);
             buttonSortPopulationLowToHigh_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonSortPopulationLowToHigh_MAD, "Сортировка по убыванию\r\nСортирует таблицу от меньшего числа населения к большему");
             buttonSortPopulationLowToHigh_MAD.UseVisualStyleBackColor = true;
             buttonSortPopulationLowToHigh_MAD.Click += buttonSortPopulationLowToHigh_MAD_Click;
             // 
             // buttonSortPopulationHighToLow_MAD
             // 
             buttonSortPopulationHighToLow_MAD.Image = (Image)resources.GetObject("buttonSortPopulationHighToLow_MAD.Image");
-            buttonSortPopulationHighToLow_MAD.Location = new Point(5, 14);
+            buttonSortPopulationHighToLow_MAD.Location = new Point(28, 14);
             buttonSortPopulationHighToLow_MAD.Name = "buttonSortPopulationHighToLow_MAD";
             buttonSortPopulationHighToLow_MAD.Size = new Size(52, 50);
             buttonSortPopulationHighToLow_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonSortPopulationHighToLow_MAD, "Сортировка по возсрастанию\r\nСортирует таблицу от большего числа населения к меньшему");
             buttonSortPopulationHighToLow_MAD.UseVisualStyleBackColor = true;
             buttonSortPopulationHighToLow_MAD.Click += buttonSortPopulationHighToLow_MAD_Click;
+            // 
+            // buttonSearch_MAD
+            // 
+            buttonSearch_MAD.Image = (Image)resources.GetObject("buttonSearch_MAD.Image");
+            buttonSearch_MAD.Location = new Point(355, 12);
+            buttonSearch_MAD.Name = "buttonSearch_MAD";
+            buttonSearch_MAD.Size = new Size(52, 50);
+            buttonSearch_MAD.TabIndex = 1;
+            toolTip1.SetToolTip(buttonSearch_MAD, "Поиск\r\nПомогает найти нужную страну в таблице");
+            buttonSearch_MAD.UseVisualStyleBackColor = true;
+            buttonSearch_MAD.Click += buttonSearch_MAD_Click;
             // 
             // buttonUpdateChart_MAD
             // 
@@ -349,6 +377,7 @@
             Text = "География";
             ((System.ComponentModel.ISupportInitialize)dataGridViewDataTable_MAD).EndInit();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             groupBoxSortPopulation_MAD.ResumeLayout(false);
             panel2.ResumeLayout(false);
             groupBoxDataTable_MAD.ResumeLayout(false);
@@ -388,5 +417,7 @@
         private Button buttonSortPopulationHighToLow_MAD;
         private Button buttonSortPopulationLowToHigh_MAD;
         private GroupBox groupBoxSortPopulation_MAD;
+        private CheckBox checkBoxOnlyDeveloped_MAD;
+        private Button buttonSearch_MAD;
     }
 }

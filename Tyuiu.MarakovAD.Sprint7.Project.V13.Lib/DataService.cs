@@ -187,5 +187,16 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Lib
                 Countries.Add(c);
             }
         }
+
+
+
+        public int FindCountryName(string countryName) {
+            for (int i = 0; i < Countries.Count; i++) {
+                if (Countries[i].Name.ToLower() == countryName.ToLower()) {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }
