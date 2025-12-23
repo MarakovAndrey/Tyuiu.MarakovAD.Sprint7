@@ -215,7 +215,9 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Lib
                 Countries.Clear();
                 foreach (var country in originalCountries)
                 {
-                    if (country.IsDeveloped) Countries.Add(country);
+                    if (country.IsDeveloped) {
+                        Countries.Add(country);
+                    }
                 }
             }
             else {
