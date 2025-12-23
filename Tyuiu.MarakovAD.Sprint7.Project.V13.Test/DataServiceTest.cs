@@ -62,7 +62,7 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Test
 
 
         [TestMethod]
-        public void GetStatisticsDeveloped_MixedCountries_ReturnsCorrectCount()
+        public void GetStatisticsDevelopedTest()
         {
 
             DataService ds = new DataService();
@@ -78,7 +78,7 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Test
 
 
         [TestMethod]
-        public void SaveToCsv_OneCountry_SavesCorrectly()
+        public void SaveToCsvTest()
         {
             DataService ds = new DataService();
             ds.Countries.Add(new Country
@@ -106,6 +106,66 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Test
             {
                 File.Delete(tempFile);
             }
+        }
+
+        [TestMethod]
+        public void SortPopulationHighToLowTest()
+        {
+            DataService ds = new DataService();
+
+            ds.Countries.Add(new Country { Name = "Россия", Population = 100 });
+            ds.Countries.Add(new Country { Name = "Бразилия", Population = 300 });
+            ds.Countries.Add(new Country { Name = "Германия", Population = 200 });
+
+            ds.SortPopulationHighToLow();
+
+            Assert.AreEqual("Бразилия", ds.Countries[0].Name);
+            Assert.AreEqual("Германия", ds.Countries[1].Name);
+            Assert.AreEqual("Россия", ds.Countries[2].Name);
+        }
+
+        [TestMethod]
+        public void SortPopulationLowToHighTest()
+        {
+            DataService ds = new DataService();
+
+            ds.Countries.Add(new Country { Name = "Россия", Population = 300 });
+            ds.Countries.Add(new Country { Name = "Германия", Population = 100 });
+            ds.Countries.Add(new Country { Name = "Бразилия", Population = 200 });
+
+            ds.SortPopulationLowToHigh();
+
+            Assert.AreEqual("Германия", ds.Countries[0].Name);
+            Assert.AreEqual("Бразилия", ds.Countries[1].Name);
+            Assert.AreEqual("Россия", ds.Countries[2].Name);
+        }
+
+        [TestMethod]
+        public void FindCountryNameTest()
+        {
+            DataService ds = new DataService();
+
+            ds.Countries.Add(new Country { Name = "Россия" });
+            ds.Countries.Add(new Country { Name = "Германия" });
+            ds.Countries.Add(new Country { Name = "Бразилия" });
+
+            int index = ds.FindCountryName("Германия");
+
+            Assert.AreEqual(1, index);
+        }
+
+        [TestMethod]
+        public void DevelopedFilter_OnlyDevelopedTrue_FiltersCorrectly()
+        {
+            DataService ds = new DataService();
+
+            ds.Countries.Add(new Country { Name = "Россия", IsDeveloped = true });
+            ds.Countries.Add(new Country { Name = "Бразилия", IsDeveloped = false });
+            ds.Countries.Add(new Country { Name = "Япония", IsDeveloped = true });
+
+            ds.DevelopedFilter(true);
+
+            Assert.AreEqual(2, ds.Countries.Count);
         }
     }
 }

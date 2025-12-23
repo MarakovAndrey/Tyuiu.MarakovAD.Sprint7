@@ -224,6 +224,7 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Lib
                     foreach (var country in originalCountries) {
                         Countries.Add(country);
                     }
+                    originalCountries = null;
                 }
             }
         }
