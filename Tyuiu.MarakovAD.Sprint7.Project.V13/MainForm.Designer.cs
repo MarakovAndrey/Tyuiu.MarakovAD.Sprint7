@@ -148,6 +148,7 @@
             checkBoxOnlyDeveloped_MAD.Text = "Только развитые ";
             toolTip1.SetToolTip(checkBoxOnlyDeveloped_MAD, "Фильтр\r\nОставляет только развитые страны");
             checkBoxOnlyDeveloped_MAD.UseVisualStyleBackColor = true;
+            checkBoxOnlyDeveloped_MAD.CheckedChanged += checkBoxOnlyDeveloped_MAD_CheckedChanged;
             // 
             // groupBoxSortPopulation_MAD
             // 

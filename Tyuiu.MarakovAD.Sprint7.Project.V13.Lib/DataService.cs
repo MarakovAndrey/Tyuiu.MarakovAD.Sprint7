@@ -11,12 +11,16 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Lib
         public string MainNationality { get; set; }
         public bool IsDeveloped { get; set; }
     }
+
+
     public class DataService
     {
         public BindingList<Country> Countries { get; private set; }
         public DataService() {
             Countries = new BindingList<Country>();
         }
+
+        private BindingList<Country> originalCountries;
 
 
         public void LoadFromCsv(string filePath) { 
@@ -197,6 +201,31 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13.Lib
                 }
             }
             return -1;
+        }
+
+
+        public void DevelopedFilter(bool OnlyDeveloped) {
+            if (OnlyDeveloped)
+            {
+                if (originalCountries == null)
+                {
+                    originalCountries = new BindingList<Country>(Countries.ToList());
+                }
+
+                Countries.Clear();
+                foreach (var country in originalCountries)
+                {
+                    if (country.IsDeveloped) Countries.Add(country);
+                }
+            }
+            else {
+                if (originalCountries != null) {
+                    Countries.Clear();
+                    foreach (var country in originalCountries) {
+                        Countries.Add(country);
+                    }
+                }
+            }
         }
     }
 }

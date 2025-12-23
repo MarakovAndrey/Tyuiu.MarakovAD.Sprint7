@@ -27,6 +27,15 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
             dataGridViewDataTable_MAD.Columns["IsDeveloped"].HeaderText = "Развитая";
         }
 
+        private void SelectRow(int rowIndex)
+        {
+            if (rowIndex >= 0 && rowIndex < dataGridViewDataTable_MAD.Rows.Count)
+            {
+                dataGridViewDataTable_MAD.ClearSelection();
+                dataGridViewDataTable_MAD.Rows[rowIndex].Selected = true;
+            }
+        }
+
         private void btnLoadCSVFile_MAD_Click(object sender, EventArgs e)
         {
             try
@@ -35,7 +44,7 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                 if (openFileDialogInputCSVFile_MAD.ShowDialog() == DialogResult.OK)
                 {
                     ds.LoadFromCsv(openFileDialogInputCSVFile_MAD.FileName);
-                    MessageBox.Show("Данные загружены!");
+                    MessageBox.Show("Данные загружены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch
@@ -103,7 +112,8 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                 var lastCountry = ds.Countries[lastIndex];
                 ds.Countries.RemoveAt(lastIndex);
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -122,7 +132,8 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                     textBoxStatistics_MAD.Text = "Данные не загружены!";
                 }
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -151,7 +162,8 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                 chartAreaStatistics_MAD.Series.Add(dataSeries);
                 chartAreaStatistics_MAD.Legends[0].Enabled = true;
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -163,7 +175,8 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                 ds.SortPopulationHighToLow();
                 MessageBox.Show("Отсортировано по убыванию населения!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -175,7 +188,8 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                 ds.SortPopulationLowToHigh();
                 MessageBox.Show("Отсортировано по возрастанию населения!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -196,7 +210,6 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                     MinimizeBox = false
                 };
 
-                // Текстовое поле для ввода
                 TextBox txtSearch = new TextBox
                 {
                     Location = new Point(20, 30),
@@ -204,7 +217,6 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                     Font = new Font("Segoe UI", 9)
                 };
 
-                // Кнопка "Найти"
                 Button btnFind = new Button
                 {
                     Text = "Найти",
@@ -213,7 +225,6 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                     DialogResult = DialogResult.OK
                 };
 
-                // Кнопка "Отмена"
                 Button btnCancel = new Button
                 {
                     Text = "Отмена",
@@ -222,52 +233,45 @@ namespace Tyuiu.MarakovAD.Sprint7.Project.V13
                     DialogResult = DialogResult.Cancel
                 };
 
-                // Добавляем элементы
                 searchDialog.Controls.Add(txtSearch);
                 searchDialog.Controls.Add(btnFind);
                 searchDialog.Controls.Add(btnCancel);
                 searchDialog.AcceptButton = btnFind;
                 searchDialog.CancelButton = btnCancel;
 
-                // Показываем диалог
                 if (searchDialog.ShowDialog() == DialogResult.OK)
                 {
                     string searchText = txtSearch.Text;
 
                     if (string.IsNullOrEmpty(searchText))
                     {
-                        MessageBox.Show("Введите название страны для поиска", "Ошибка");
+                        MessageBox.Show("Введите название страны для поиска", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
-                    // Ищем страну
                     int index = ds.FindCountryName(searchText);
 
                     if (index >= 0)
                     {
-                        // Нашли - выделяем строку
                         SelectRow(index);
 
-                        MessageBox.Show($"Найдена страна: {ds.Countries[index].Name}",
-                                       "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Найдена страна: {ds.Countries[index].Name}", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show($"Страна '{searchText}' не найдена",
-                                       "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Страна '{searchText}' не найдена", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void SelectRow(int rowIndex) {
-            if (rowIndex >= 0 && rowIndex < dataGridViewDataTable_MAD.Rows.Count) { 
-                dataGridViewDataTable_MAD.ClearSelection();
-                dataGridViewDataTable_MAD.Rows[rowIndex].Selected = true;
-            }
+        private void checkBoxOnlyDeveloped_MAD_CheckedChanged(object sender, EventArgs e)
+        {
+            ds.DevelopedFilter(checkBoxOnlyDeveloped_MAD.Checked);
         }
     }
 }
